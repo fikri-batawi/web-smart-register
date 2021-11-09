@@ -80,54 +80,56 @@
                   <div class="col-xs-12 col-sm-6 col-md-6 header-text">
                     <div class="signup-form">
                       <h1>Registrasi Akun</h1>
-                      <div class="mb-3 row">
-                        <label for="username" class="col-sm-4 col-form-label" style="margin-top:10px;">Username</label>
-                        <div class="col-sm-8">
-                          <input type="text" class="form-control" id="username" name="username">
+                      <form action="{{route('post.register')}}" method="POST">
+                        @csrf
+                        <div class="mb-3 row">
+                          <label for="username" class="col-sm-4 col-form-label" style="margin-top:10px;">Username</label>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control" id="username" name="username">
+                          </div>
                         </div>
-                      </div>
-                      <div class="mb-3 row">
-                        <label for="phone" class="col-sm-4 col-form-label" style="margin-top:10px;">Telepon</label>
-                        <div class="col-sm-8">
-                          <input type="number" class="form-control" id="phone" name="phone">
+                        <div class="mb-3 row">
+                          <label for="phone" class="col-sm-4 col-form-label" style="margin-top:10px;">Telepon</label>
+                          <div class="col-sm-8">
+                            <input type="number" class="form-control" id="phone" name="phone">
+                          </div>
                         </div>
-                      </div>
-                      <div class="mb-3 row">
-                        <label for="gender" class="col-sm-4 col-form-label" style="margin-top:10px;">Jenis Kelamin</label>
-                        <div class="col-sm-8">
-                          <input class="form-check-input" type="radio" name="gender"> Laki - laki
-                          <input class="form-check-input" type="radio" name="gender"> Perempuan
+                        <div class="mb-3 row">
+                          <label for="gender" class="col-sm-4 col-form-label" style="margin-top:10px;">Jenis Kelamin</label>
+                          <div class="col-sm-8">
+                            <input class="form-check-input" type="radio" value="L" name="gender" checked> Laki - laki
+                            <input class="form-check-input" type="radio" value="P" name="gender"> Perempuan
+                          </div>
                         </div>
-                      </div>
-                      <div class="mb-3 row">
-                        <label for="ttl" class="col-sm-4 col-form-label" style="margin-top:10px;">Tanggal Lahir</label>
-                        <div class="col-sm-8">
-                          <input type="date" class="form-control" id="ttl" name="ttl">
+                        <div class="mb-3 row">
+                          <label for="ttl" class="col-sm-4 col-form-label" style="margin-top:10px;">Tanggal Lahir</label>
+                          <div class="col-sm-8">
+                            <input type="date" class="form-control" id="ttl" name="ttl">
+                          </div>
                         </div>
-                      </div>
-                      <div class="mb-3 row">
-                        <label for="alamat" class="col-sm-4 col-form-label" style="margin-top:10px;">Alamat</label>
-                        <div class="col-sm-8">
-                          <input type="text" class="form-control" id="alamat" name="alamat">
+                        <div class="mb-3 row">
+                          <label for="alamat" class="col-sm-4 col-form-label" style="margin-top:10px;">Alamat</label>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control" id="alamat" name="alamat">
+                          </div>
                         </div>
-                      </div>
-                      <div class="mb-3 row">
-                        <label for="email" class="col-sm-4 col-form-label" style="margin-top:10px;">Email</label>
-                        <div class="col-sm-8">
-                          <input type="email" class="form-control" id="email" name="email">
+                        <div class="mb-3 row">
+                          <label for="email" class="col-sm-4 col-form-label" style="margin-top:10px;">Email</label>
+                          <div class="col-sm-8">
+                            <input type="email" class="form-control" id="email" name="email">
+                          </div>
                         </div>
-                      </div>
-                      <div class="mb-3 row">
-                        <label for="password" class="col-sm-4 col-form-label" style="margin-top:10px;">Password</label>
-                        <div class="col-sm-8">
-                          <input type="password" class="form-control" id="password" name="password">
+                        <div class="mb-3 row">
+                          <label for="password" class="col-sm-4 col-form-label" style="margin-top:10px;">Password</label>
+                          <div class="col-sm-8">
+                            <input type="password" class="form-control" id="password" name="password">
+                          </div>
                         </div>
-                      </div>
-
-                      <div class="mb-3">
-                        <button type="submit" class="btn btn-primary" style="color:#000;background:#fff;border-color:#000;">Register</button>
-                        <a href="{{route('site.index')}}" style="color:#000;">Back To Home</a>
-                      </div>      
+                        <div class="mb-3">
+                          <button type="submit" class="btn btn-primary" style="color:#000;background:#fff;border-color:#000;">Register</button>
+                          <a href="{{route('site.index')}}" style="color:#000;">Back To Home</a>
+                        </div>
+                      </form>
                     </div>
                   </div>
                 </div>               

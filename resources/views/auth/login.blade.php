@@ -74,23 +74,36 @@
             <div>
               <div class="col-xs-12 col-sm-6 col-md-6 header-text">
                 <div class="signup-form">
+                  @if (session('message'))
+                    <div class="alert alert-success" role="alert">
+                      {{ session('message') }}
+                    </div>
+                  @endif
+                  @if (session('error'))
+                    <div class="alert alert-danger" role="alert">
+                      {{ session('error') }}
+                    </div>
+                  @endif
                   <h1>Login</h1>
-                  <div class="mb-3 row">
-                    <label for="email" class="col-sm-4 col-form-label" style="margin-top:10px;">Email</label>
-                    <div class="col-sm-8">
-                      <input type="email" class="form-control" id="email" name="email">
+                  <form action="{{route('post.login')}}" method="post">
+                    @csrf
+                    <div class="mb-3 row">
+                      <label for="email" class="col-sm-4 col-form-label" style="margin-top:10px;">Email</label>
+                      <div class="col-sm-8">
+                        <input type="email" class="form-control" id="email" name="email" require>
+                      </div>
                     </div>
-                  </div>
-                  <div class="mb-3 row">
-                    <label for="password" class="col-sm-4 col-form-label" style="margin-top:10px;">Password</label>
-                    <div class="col-sm-8">
-                      <input type="password" class="form-control" id="password" name="password">
+                    <div class="mb-3 row">
+                      <label for="password" class="col-sm-4 col-form-label" style="margin-top:10px;">Password</label>
+                      <div class="col-sm-8">
+                        <input type="password" class="form-control" id="password" name="password" require>
+                      </div>
                     </div>
-                  </div>
-                  <div class="mb-3">
-                    <button type="submit" class="btn btn-primary" style="color:#000;background:#fff;border-color:#000;">Login</button>
-                    <a href="{{route('site.index')}}" style="color:#000;">Back To Home</a>
-                  </div> 
+                    <div class="mb-3">
+                      <button type="submit" class="btn btn-primary" style="color:#000;background:#fff;border-color:#000;">Login</button>
+                      <a href="{{route('site.index')}}" style="color:#000;">Back To Home</a>
+                    </div> 
+                  </form>
                 </div>
               </div>               
             </div>
