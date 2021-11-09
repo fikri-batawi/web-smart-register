@@ -64,6 +64,7 @@
               </div>
             </div>
           </div>
+          <!-- End Content -->
         </div>
          <!-- Footer -->
          @include('dashboard.includes.footer')

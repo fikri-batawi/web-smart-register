@@ -35,19 +35,19 @@
       <ul class="vertical-nav-menu">
         <li class="app-sidebar__heading">Dashboards</li>
         <li>
-          <a href="index.html" class="mm-active">
+          <a href="{{route('dashboard.index')}}" class="mm-active">
             <i class="metismenu-icon pe-7s-rocket"></i>
             Dashboard
           </a>
         </li>
         <li>
-          <a href="tables-regular.html">
+          <a href="{{route('dashboard.pendaftaran')}}">
             <i class="metismenu-icon pe-7s-display2"></i>
             Pendaftaran
           </a>
         </li>
         <li>
-          <a href="tables-regular.html">
+          <a href="{{route('dashboard.riwayat_pendaftaran')}}">
             <i class="metismenu-icon pe-7s-display2"></i>
             Riwayat Pendaftaran
           </a>

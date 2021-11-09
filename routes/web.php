@@ -22,3 +22,5 @@ Route::get('/logout', 'AuthController@postLogout')->name('post.logout');
 
 // Dashboard
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
+Route::get('/dashboard/pendaftaran', 'DashboardController@pendaftaran')->name('dashboard.pendaftaran');
+Route::get('/dashboard/riwayat-pendaftaran', 'DashboardController@riwayat_pendaftaran')->name('dashboard.riwayat_pendaftaran');
