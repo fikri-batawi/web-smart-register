@@ -19,7 +19,7 @@ class CreateUserAnswerRegistrationsTable extends Migration
             $table->string('usia');
             $table->boolean('positif_kurang_3_bulan');
             $table->boolean('vaksin_1');
-            $table->boolean('deman');
+            $table->boolean('demam');
             $table->boolean('dirawat');
             $table->boolean('gangguan_imun');
             $table->boolean('imunosupresan');

@@ -10,9 +10,9 @@
       <div class="app-main__outer">
         <div class="app-main__inner">
           <!-- Content -->
-          <form action="">
+          
             <!-- NIK -->
-            <div class="tab-content">
+            <!-- <div class="tab-content">
 							<div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
 								<div class="main-card mb-3 card">
 									<div class="card-body">
@@ -24,7 +24,7 @@
 									</div>
 								</div>
 							</div>
-            </div>
+            </div> -->
 
             <!-- Tab -->
             <ul class="body-tabs body-tabs-layout tabs-animated body-tabs-animated nav">
@@ -49,56 +49,123 @@
 							<div class="tab-pane tabs-animation fade show active" id="anak-anak" role="tabpanel">
 								<div class="row">
 									<div class="col-md-12">
-										<!-- pertanyaan -->
-										<h5 class="card-title">1. Apakah anak mendapat vaksin lain kurang dari 1 bulan sebelumnya? </h5>
-										<fieldset class="position-relative form-group">
-											<div class="position-relative form-check"><label class="form-check-label"><input name="radio1" type="radio" class="form-check-input"> Ya</label>
+										<form action="{{route('dashboard.pendaftaran.post.anak')}}" method="post">
+											@csrf
+											@if (session('message'))
+												<div class="alert alert-success" role="alert">
+													{{ session('message') }}
+												</div>
+											@endif
+											@if (session('error'))
+												<div class="alert alert-danger" role="alert">
+													{{ session('error') }}
+												</div>
+											@endif
+											<div class="position-relative form-group">
+												<label for="nik" class="">NIK</label>
+												<input name="nik" id="nik" placeholder="3174xxxx" type="text" class="form-control required">
 											</div>
-											<div class="position-relative form-check"><label class="form-check-label"><input name="radio1" type="radio" class="form-check-input"> Tidak</label></div>
-										</fieldset>
-										<h5 class="card-title">2. Apakah anak pernah sakit COVID-19 kurang dari 3 bulan?</h5>
-										<fieldset class="position-relative form-group">
-											<div class="position-relative form-check"><label class="form-check-label"><input name="radio1" type="radio" class="form-check-input"> Ya</label>
-											</div>
-											<div class="position-relative form-check"><label class="form-check-label"><input name="radio1" type="radio" class="form-check-input"> Tidak</label></div>
-										</fieldset>
-										<h5 class="card-title">3. Apakah dalam 7 hari terakhir anak menderita demam atau batuk pilek atau nyeri menelan atau muntah atau diare?</h5>
-										<fieldset class="position-relative form-group">
-											<div class="position-relative form-check"><label class="form-check-label"><input name="radio1" type="radio" class="form-check-input"> Ya</label>
-											</div>
-											<div class="position-relative form-check"><label class="form-check-label"><input name="radio1" type="radio" class="form-check-input"> Tidak</label></div>
-										</fieldset>
-										<h5 class="card-title">4. Apakah dalam 7 hari terakhir anak perlu perawatan di RS atau menderita kedaruratan medis seperti sesak napas, kejang, tidak sadar, berdebar - debar, pendarahan, hipertensi, tremor hebat?</h5>
-										<fieldset class="position-relative form-group">
-											<div class="position-relative form-check"><label class="form-check-label"><input name="radio1" type="radio" class="form-check-input"> Ya</label>
-											</div>
-											<div class="position-relative form-check"><label class="form-check-label"><input name="radio1" type="radio" class="form-check-input"> Tidak</label></div>
-										</fieldset>
-										<h5 class="card-title">5. Apakah anda sedang menderita gangguan imunitas (hiperimun; auto imun, alergi berat dan defisiensi imun, gizi buruk, HIV berat, keganasan?</h5>
-										<fieldset class="position-relative form-group">
-											<div class="position-relative form-check"><label class="form-check-label"><input name="radio1" type="radio" class="form-check-input"> Ya</label>
-											</div>
-											<div class="position-relative form-check"><label class="form-check-label"><input name="radio1" type="radio" class="form-check-input"> Tidak</label></div>
-										</fieldset>
-										<h5 class="card-title">6. Apakah saat ini anak sedang menjalani pengobatan imunosupresan jangka pangjang (steroid lebih dari 2 minggu sitostatika) ?</h5>
-										<fieldset class="position-relative form-group">
-											<div class="position-relative form-check"><label class="form-check-label"><input name="radio1" type="radio" class="form-check-input"> Ya</label>
-											</div>
-											<div class="position-relative form-check"><label class="form-check-label"><input name="radio1" type="radio" class="form-check-input"> Tidak</label></div>
-										</fieldset>
-										<h5 class="card-title">7. Apakah anak memepunyai riwayat alergi berat seperti sesak napas, bengkak, urtikaria di seluruh tubuh atau gejala syok anafilaksis (tidak sadar) setelah vaksinasi sebelumnya?</h5>
-										<fieldset class="position-relative form-group">
-											<div class="position-relative form-check"><label class="form-check-label"><input name="radio1" type="radio" class="form-check-input"> Ya</label>
-											</div>
-											<div class="position-relative form-check"><label class="form-check-label"><input name="radio1" type="radio" class="form-check-input"> Tidak</label></div>
-										</fieldset>
+											<!-- pertanyaan -->
+											<h5 class="card-title">1. Apakah anak mendapat vaksin lain kurang dari 1 bulan sebelumnya? </h5>
+											<fieldset class="position-relative form-group">
+												<div class="position-relative form-check">
+													<label class="form-check-label">
+														<input name="ans[vaksin_1]" value="1" type="radio" class="form-check-input"> Ya
+													</label>
+												</div>
+												<div class="position-relative form-check">
+													<label class="form-check-label">
+														<input name="ans[vaksin_1]" value="0" type="radio" class="form-check-input"> Tidak
+													</label>
+												</div>
+											</fieldset>
+											<h5 class="card-title">2. Apakah anak pernah sakit COVID-19 kurang dari 3 bulan?</h5>
+											<fieldset class="position-relative form-group">
+												<div class="position-relative form-check">
+													<label class="form-check-label">
+														<input name="ans[positif<3bulan]" value="1" type="radio" class="form-check-input"> Ya
+													</label>
+												</div>
+												<div class="position-relative form-check">
+													<label class="form-check-label">
+														<input name="ans[positif<3bulan]" value="0" type="radio" class="form-check-input"> Tidak
+													</label>
+												</div>
+											</fieldset>
+											<h5 class="card-title">3. Apakah dalam 7 hari terakhir anak menderita demam atau batuk pilek atau nyeri menelan atau muntah atau diare?</h5>
+											<fieldset class="position-relative form-group">
+												<div class="position-relative form-check">
+													<label class="form-check-label">
+														<input name="ans[demam]" value="1" type="radio" class="form-check-input"> Ya
+													</label>
+												</div>
+												<div class="position-relative form-check">
+													<label class="form-check-label">
+														<input name="ans[demam]" value="0" type="radio" class="form-check-input"> Tidak
+													</label>
+												</div>
+											</fieldset>
+											<h5 class="card-title">4. Apakah dalam 7 hari terakhir anak perlu perawatan di RS atau menderita kedaruratan medis seperti sesak napas, kejang, tidak sadar, berdebar - debar, pendarahan, hipertensi, tremor hebat?</h5>
+											<fieldset class="position-relative form-group">
+												<div class="position-relative form-check">
+													<label class="form-check-label">
+														<input name="ans[dirawat]" value="1" type="radio" class="form-check-input"> Ya
+													</label>
+												</div>
+												<div class="position-relative form-check">
+													<label class="form-check-label">
+														<input name="ans[dirawat]" value="0" type="radio" class="form-check-input"> Tidak
+													</label>
+												</div>
+											</fieldset>
+											<h5 class="card-title">5. Apakah anda sedang menderita gangguan imunitas (hiperimun; auto imun, alergi berat dan defisiensi imun, gizi buruk, HIV berat, keganasan?</h5>
+											<fieldset class="position-relative form-group">
+												<div class="position-relative form-check">
+													<label class="form-check-label">
+														<input name="ans[gangguan_imun]" value="1" type="radio" class="form-check-input"> Ya
+													</label>
+												</div>
+												<div class="position-relative form-check">
+													<label class="form-check-label">
+														<input name="ans[gangguan_imun]" value="0" type="radio" class="form-check-input"> Tidak
+													</label>
+												</div>
+											</fieldset>
+											<h5 class="card-title">6. Apakah saat ini anak sedang menjalani pengobatan imunosupresan jangka pangjang (steroid lebih dari 2 minggu sitostatika) ?</h5>
+											<fieldset class="position-relative form-group">
+												<div class="position-relative form-check">
+													<label class="form-check-label">
+														<input name="ans[imunosupresan]" value="1" type="radio" class="form-check-input"> Ya
+													</label>
+												</div>
+												<div class="position-relative form-check">
+													<label class="form-check-label">
+														<input name="ans[imunosupresan]" value="0" type="radio" class="form-check-input"> Tidak
+													</label>
+												</div>
+											</fieldset>
+											<h5 class="card-title">7. Apakah anak memepunyai riwayat alergi berat seperti sesak napas, bengkak, urtikaria di seluruh tubuh atau gejala syok anafilaksis (tidak sadar) setelah vaksinasi sebelumnya?</h5>
+											<fieldset class="position-relative form-group">
+												<div class="position-relative form-check">
+													<label class="form-check-label">
+														<input name="ans[alergi_berat]" value="1" type="radio" class="form-check-input"> Ya
+													</label>
+												</div>
+												<div class="position-relative form-check">
+													<label class="form-check-label">
+														<input name="ans[alergi_berat]" value="0" type="radio" class="form-check-input"> Tidak
+													</label>
+												</div>
+											</fieldset>
+											<button class="btn btn-primary mb-3">Submit</button>
+										</form>
 										<!--  -->
 									</div>
 								</div>
 							</div>
 
 							<!-- Pertanyaan umum -->
-							<div class="tab-pane tabs-animation fade show active" id="umum" role="tabpanel">
+							<div class="tab-pane tabs-animation fade" id="umum" role="tabpanel">
 								<div class="row">
 										<div class="col-md-12">
 												<!-- pertanyaan -->
@@ -150,6 +217,7 @@
 														</div>
 														<div class="position-relative form-check"><label class="form-check-label"><input name="radio1" type="radio" class="form-check-input"> Tidak</label></div>
 												</fieldset>
+												<input type="text" name="umum" value="1">
 												<!--  -->
 										</div>
 								</div>
@@ -202,14 +270,13 @@
 																</div>
 																<div class="position-relative form-check"><label class="form-check-label"><input name="radio1" type="radio" class="form-check-input"> Tidak</label></div>
 														</fieldset>
+														<input type="text" name="hamil" value="1">
 														<!--  -->
 												</div>
 										</div>
 								</div>
 							</div>
-							<button class="btn btn-primary mb-3">Submit</button>
             </div>
-          </form>
           <!-- End Content -->
 					<!-- Footer -->
 					@include('dashboard.includes.footer')
