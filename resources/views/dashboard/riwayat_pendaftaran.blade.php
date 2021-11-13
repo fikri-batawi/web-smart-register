@@ -10,13 +10,33 @@
       <div class="app-main__outer">
         <div class="app-main__inner">
           <!-- Content -->
-          <table class="table table-striped table-hover">
-            <tr>
-              <th>No</th>
-              <th>NIK</th>
-              <th>Kategori</th>
-              <th>Keterangan</th>
-            </tr>
+          <div class="row">
+            <div class="col-md-12">
+            <div class="main-card mb-3 card">
+              <div class="card-body">
+                <h5 class="card-title">Riwayat Pendaftaran</h5>
+                <table class="mb-0 table table-striped">
+                  <thead>
+                    <tr>
+                      <th>No</th>
+                      <th>NIK</th>
+                      <th>Kategori</th>
+                      <th>Keterangan</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th>1</th>
+                      <td>Mark</td>
+                      <td>Otto</td>
+                      <td>@mdo</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+          </div>
+            </div>
+          </div>
           <!-- End Content -->
         </div>
          <!-- Footer -->
