@@ -348,6 +348,9 @@ class DashboardController extends Controller
     return redirect()->route('dashboard.riwayat_pendaftaran');
   }
   public function riwayat_pendaftaran(){
-    return view('dashboard.riwayat_pendaftaran');
+    $registers  = Register::all();
+    return view('dashboard.riwayat_pendaftaran', [
+      'registers' => $registers,
+    ]);
   }
 }

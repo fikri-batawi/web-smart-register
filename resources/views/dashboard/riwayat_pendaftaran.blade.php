@@ -21,16 +21,20 @@
                       <th>No</th>
                       <th>NIK</th>
                       <th>Kategori</th>
-                      <th>Keterangan</th>
+                      <th>Boleh Vaksin</th>
+                      <th>Waktu</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <th>1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                    </tr>
+                    @foreach($registers as $key => $regist)
+                      <tr>
+                        <th>{{$key + 1}}</th>
+                        <td>{{$regist->nik}}</td>
+                        <td>{{$regist->keterangan}}</td>
+                        <td>{{$regist->status}}</td>
+                        <td>{{$regist->created_at}}</td>
+                      </tr>
+                    @endforeach
                   </tbody>
                 </table>
               </div>
