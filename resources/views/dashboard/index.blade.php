@@ -34,7 +34,7 @@
                     <div class="widget-heading">Total Pendaftaran</div>
                   </div>
                   <div class="widget-content-right">
-                    <div class="widget-numbers text-white"><span>1896</span></div>
+                    <div class="widget-numbers text-white"><span>{{$total_pendaftaran}}</span></div>
                   </div>
                 </div>
               </div>
@@ -43,10 +43,10 @@
               <div class="card mb-3 widget-content bg-arielle-smile">
                 <div class="widget-content-wrapper text-white">
                   <div class="widget-content-left">
-                    <div class="widget-heading">Peserta ditunda vaksin</div>
+                    <div class="widget-heading">Peserta tidak boleh vaksin</div>
                   </div>
                   <div class="widget-content-right">
-                    <div class="widget-numbers text-white"><span>568</span></div>
+                    <div class="widget-numbers text-white"><span>{{$peserta_tidak_boleh_vaksin}}</span></div>
                   </div>
                 </div>
               </div>
@@ -58,7 +58,7 @@
                     <div class="widget-heading">Peserta boleh vaksin </div>
                   </div>
                   <div class="widget-content-right">
-                    <div class="widget-numbers text-white"><span>46</span></div>
+                    <div class="widget-numbers text-white"><span>{{$peserta_boleh_vaksin}}</span></div>
                   </div>
                 </div>
               </div>

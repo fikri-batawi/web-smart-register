@@ -11,7 +11,14 @@ use App\User;
 class DashboardController extends Controller
 {
   public function index(){
-    return view('dashboard.index');
+    $total_pendaftaran          = Register::all()->count();
+    $peserta_boleh_vaksin       = Register::where('status', 'boleh')->count();
+    $peserta_tidak_boleh_vaksin = Register::where('status', 'tidak')->count();
+    return view('dashboard.index', [
+      'total_pendaftaran'           => $total_pendaftaran,
+      'peserta_boleh_vaksin'        => $peserta_boleh_vaksin,
+      'peserta_tidak_boleh_vaksin'  => $peserta_tidak_boleh_vaksin,
+    ]);
   }
   public function pendaftaran(){
     return view('dashboard.pendaftaran');
