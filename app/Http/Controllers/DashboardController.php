@@ -169,7 +169,7 @@ class DashboardController extends Controller
         $register->user_id    = $user->id;
         $register->nik        = $request->nik;
         $register->status     = 'tidak';
-        $register->keterangan = 'anak';
+        $register->keterangan = 'umum';
         $register->save();
         return redirect()->route('dashboard.riwayat_pendaftaran');
       }elseif($answer == '1' && $key == 'alergi_berat'){
@@ -199,7 +199,7 @@ class DashboardController extends Controller
         $register->user_id    = $user->id;
         $register->nik        = $request->nik;
         $register->status     = 'boleh';
-        $register->keterangan = 'anak';
+        $register->keterangan = 'umum';
         $register->save();
 
         return redirect()->route('dashboard.riwayat_pendaftaran');
@@ -232,7 +232,117 @@ class DashboardController extends Controller
     $register->user_id    = $user->id;
     $register->nik        = $request->nik;
     $register->status     = 'boleh';
-    $register->keterangan = 'anak';
+    $register->keterangan = 'umum';
+    $register->save();
+
+    return redirect()->route('dashboard.riwayat_pendaftaran');
+  }
+  public function postPendaftaranHamil(Request $request){
+    // Check Nik 
+    if(!$request->nik){
+      return back()->with('error', 'Nik harus diisi!');
+    }
+    // Check jawaban
+    if(!$request->ans || count($request->ans) != 7){
+      return back()->with('error', 'Jawaban harus diisi semua!');
+    }
+  
+    $user         = User::find(Auth()->user()->id);
+    $explode_date = explode('-', $user->birth_date);
+    $usia         = (int)date('Y') - (int)$explode_date[0];
+
+    foreach($request->ans as $key => $answer){
+      if($answer == '1' && $key != 'alergi_berat' || $answer == '1' && $key != 'usia_kehamilan'){
+        // Jawaban User
+        $userAnswerRegister = new UserAnswerRegistration;
+        $userAnswerRegister->nik                    = $request->nik;
+        $userAnswerRegister->usia                   = $usia;
+        $userAnswerRegister->positif_kurang_3_bulan = $request->ans['positif<3bulan'];
+        $userAnswerRegister->pembekuan_darah        = $request->ans['pembekuan_darah'];
+        $userAnswerRegister->lupus                  = $request->ans['lupus'];
+        $userAnswerRegister->imunosupresan          = $request->ans['imunosupresan'];
+        $userAnswerRegister->alergi_berat           = $request->ans['alergi_berat'];
+        $userAnswerRegister->usia_kehamilan         = $request->ans['usia_kehamilan'];
+        $userAnswerRegister->preeklampsia           = $request->ans['preeklampsia'];
+        $userAnswerRegister->kelelahan              = false;
+        $userAnswerRegister->penyakit_berat         = false;
+        $userAnswerRegister->penurunan_berat        = false;
+        $userAnswerRegister->vaksin_1               = false;
+        $userAnswerRegister->demam                  = false;
+        $userAnswerRegister->dirawat                = false;
+        $userAnswerRegister->gangguan_imun          = false;
+        $userAnswerRegister->dapat_vaksin           = 'Tidak';
+        $userAnswerRegister->save();
+
+        // Register
+        $register = new Register;
+        $register->user_id    = $user->id;
+        $register->nik        = $request->nik;
+        $register->status     = 'tidak';
+        $register->keterangan = 'hamil';
+        $register->save();
+        return redirect()->route('dashboard.riwayat_pendaftaran');
+      }elseif($answer == '1' && $key == 'alergi_berat' || $answer == '1' && $key == 'usia_kehamilan'){
+        // Jawaban User
+        $userAnswerRegister = new UserAnswerRegistration;
+        $userAnswerRegister->nik                    = $request->nik;
+        $userAnswerRegister->usia                   = $usia;
+        $userAnswerRegister->positif_kurang_3_bulan = $request->ans['positif<3bulan'];
+        $userAnswerRegister->pembekuan_darah        = $request->ans['pembekuan_darah'];
+        $userAnswerRegister->lupus                  = $request->ans['lupus'];
+        $userAnswerRegister->imunosupresan          = $request->ans['imunosupresan'];
+        $userAnswerRegister->alergi_berat           = $request->ans['alergi_berat'];
+        $userAnswerRegister->usia_kehamilan         = $request->ans['usia_kehamilan'];
+        $userAnswerRegister->preeklampsia           = $request->ans['preeklampsia'];
+        $userAnswerRegister->kelelahan              = false;
+        $userAnswerRegister->penyakit_berat         = false;
+        $userAnswerRegister->penurunan_berat        = false;
+        $userAnswerRegister->vaksin_1               = false;
+        $userAnswerRegister->demam                  = false;
+        $userAnswerRegister->dirawat                = false;
+        $userAnswerRegister->gangguan_imun          = false;
+        $userAnswerRegister->dapat_vaksin           = 'Ya';
+        $userAnswerRegister->save();
+
+        // Register
+        $register = new Register;
+        $register->user_id    = $user->id;
+        $register->nik        = $request->nik;
+        $register->status     = 'boleh';
+        $register->keterangan = 'hamil';
+        $register->save();
+
+        return redirect()->route('dashboard.riwayat_pendaftaran');
+      }
+    }
+
+    // Jawaban User
+    $userAnswerRegister = new UserAnswerRegistration;
+    $userAnswerRegister->nik                    = $request->nik;
+    $userAnswerRegister->usia                   = $usia;
+    $userAnswerRegister->positif_kurang_3_bulan = $request->ans['positif<3bulan'];
+    $userAnswerRegister->pembekuan_darah        = $request->ans['pembekuan_darah'];
+    $userAnswerRegister->lupus                  = $request->ans['lupus'];
+    $userAnswerRegister->imunosupresan          = $request->ans['imunosupresan'];
+    $userAnswerRegister->alergi_berat           = $request->ans['alergi_berat'];
+    $userAnswerRegister->usia_kehamilan         = $request->ans['usia_kehamilan'];
+    $userAnswerRegister->preeklampsia           = $request->ans['preeklampsia'];
+    $userAnswerRegister->kelelahan              = false;
+    $userAnswerRegister->penyakit_berat         = false;
+    $userAnswerRegister->penurunan_berat        = false;
+    $userAnswerRegister->vaksin_1               = false;
+    $userAnswerRegister->demam                  = false;
+    $userAnswerRegister->dirawat                = false;
+    $userAnswerRegister->gangguan_imun          = false;
+    $userAnswerRegister->dapat_vaksin           = 'Ya';
+    $userAnswerRegister->save();
+
+    // Register
+    $register = new Register;
+    $register->user_id    = $user->id;
+    $register->nik        = $request->nik;
+    $register->status     = 'boleh';
+    $register->keterangan = 'hamil';
     $register->save();
 
     return redirect()->route('dashboard.riwayat_pendaftaran');

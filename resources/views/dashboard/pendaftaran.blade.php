@@ -300,52 +300,117 @@
 							<div class="tab-pane tabs-animation fade" id="ibu-hamil" role="tabpanel">
 								<div class="row">
 										<div class="col-md-12">
-												<!-- pertanyaan -->
-														<h5 class="card-title">1. Apakah usia kehamilan Anda kurang dari 13 minggu?</h5>
-														<fieldset class="position-relative form-group">
-																<div class="position-relative form-check"><label class="form-check-label"><input name="radio1" type="radio" class="form-check-input"> Ya</label>
-																</div>
-																<div class="position-relative form-check"><label class="form-check-label"><input name="radio1" type="radio" class="form-check-input"> Tidak</label></div>
-														</fieldset>
-														<h5 class="card-title">2.	Apakah ibu memiliki keluhan dan tanda preeklampsia, seperti: Kaki bengkak, Sakit kepala, Nyeri ulu hati, Pandangan kabur?</h5>
-														<fieldset class="position-relative form-group">
-																<div class="position-relative form-check"><label class="form-check-label"><input name="radio1" type="radio" class="form-check-input"> Ya</label>
-																</div>
-																<div class="position-relative form-check"><label class="form-check-label"><input name="radio1" type="radio" class="form-check-input"> Tidak</label></div>
-														</fieldset>
-														<h5 class="card-title">3.	Apakah Anda memiliki riwayat alergi berat seperti sesak napas, bengkak dan urtikaria seluruh badan atau reaksi berat lainnya karena vaksin?</h5>
-														<fieldset class="position-relative form-group">
-																<div class="position-relative form-check"><label class="form-check-label"><input name="radio1" type="radio" class="form-check-input"> Ya</label>
-																</div>
-																<div class="position-relative form-check"><label class="form-check-label"><input name="radio1" type="radio" class="form-check-input"> Tidak</label></div>
-														</fieldset>
-														<h5 class="card-title">4. Apakah anda sedang mendapat pengobatan immunosupressant seperti kortikosteroid dan kemoterapi?</h5>
-														<fieldset class="position-relative form-group">
-																<div class="position-relative form-check"><label class="form-check-label"><input name="radio1" type="radio" class="form-check-input"> Ya</label>
-																</div>
-																<div class="position-relative form-check"><label class="form-check-label"><input name="radio1" type="radio" class="form-check-input"> Tidak</label></div>
-														</fieldset>
-														<h5 class="card-title">5.	Apakah anda mengidap penyakit autoimun seperti lupus?</h5>
-														<fieldset class="position-relative form-group">
-																<div class="position-relative form-check"><label class="form-check-label"><input name="radio1" type="radio" class="form-check-input"> Ya</label>
-																</div>
-																<div class="position-relative form-check"><label class="form-check-label"><input name="radio1" type="radio" class="form-check-input"> Tidak</label></div>
-														</fieldset>
-														<h5 class="card-title">6.	Apakah Anda sedang mendapat pengobatan untuk gangguan pembekuan darah, kelainan darah, defisiensi imun dan penerima produk darah/transfusi?</h5>
-														<fieldset class="position-relative form-group">
-																<div class="position-relative form-check"><label class="form-check-label"><input name="radio1" type="radio" class="form-check-input"> Ya</label>
-																</div>
-																<div class="position-relative form-check"><label class="form-check-label"><input name="radio1" type="radio" class="form-check-input"> Tidak</label></div>
-														</fieldset>
-														<h5 class="card-title">7.	Apakah anda pernah terkonfirmasi menderita COVID-19 kurang dari 3 bulan?</h5>
-														<fieldset class="position-relative form-group">
-																<div class="position-relative form-check"><label class="form-check-label"><input name="radio1" type="radio" class="form-check-input"> Ya</label>
-																</div>
-																<div class="position-relative form-check"><label class="form-check-label"><input name="radio1" type="radio" class="form-check-input"> Tidak</label></div>
-														</fieldset>
-														<input type="text" name="hamil" value="1">
-														<!--  -->
+											<form action="{{route('dashboard.pendaftaran.post.hamil')}}" method="post">
+												@csrf
+												@if (session('message'))
+													<div class="alert alert-success" role="alert">
+														{{ session('message') }}
+													</div>
+												@endif
+												@if (session('error'))
+													<div class="alert alert-danger" role="alert">
+														{{ session('error') }}
+													</div>
+												@endif
+												<div class="position-relative form-group">
+													<label for="nik" class="">NIK</label>
+													<input name="nik" id="nik" placeholder="3174xxxx" type="text" class="form-control required">
 												</div>
+												<!-- pertanyaan -->
+												<h5 class="card-title">1. Apakah anak pernah sakit COVID-19 kurang dari 3 bulan?</h5>
+												<fieldset class="position-relative form-group">
+													<div class="position-relative form-check">
+														<label class="form-check-label">
+															<input name="ans[positif<3bulan]" value="1" type="radio" class="form-check-input"> Ya
+														</label>
+													</div>
+													<div class="position-relative form-check">
+														<label class="form-check-label">
+															<input name="ans[positif<3bulan]" value="0" type="radio" class="form-check-input"> Tidak
+														</label>
+													</div>
+												</fieldset>
+												<h5 class="card-title">2. Apakah Anda sedang mendapat pengobatan untuk gangguan pembekuan darah, kelainan darah, defisiensi imun dan penerima produk darah/transfusi?</h5>
+												<fieldset class="position-relative form-group">
+														<div class="position-relative form-check">
+															<label class="form-check-label">
+																<input name="ans[pembekuan_darah]" value="1" type="radio" class="form-check-input"> Ya
+															</label>
+														</div>
+														<div class="position-relative form-check">
+															<label class="form-check-label">
+																<input name="ans[pembekuan_darah]" value="0" type="radio" class="form-check-input"> Tidak
+															</label>
+														</div>
+												</fieldset>
+												<h5 class="card-title">3. Apakah anda mengidap penyakit autoimun seperti lupus?</h5>
+												<fieldset class="position-relative form-group">
+														<div class="position-relative form-check">
+															<label class="form-check-label">
+																<input name="ans[lupus]" value="1" type="radio" class="form-check-input"> Ya
+															</label>
+														</div>
+														<div class="position-relative form-check">
+															<label class="form-check-label">
+																<input name="ans[lupus]" value="0" type="radio" class="form-check-input"> Tidak
+															</label>
+														</div>
+												</fieldset>
+												<h5 class="card-title">4. Apakah saat ini anak sedang menjalani pengobatan imunosupresan jangka pangjang (steroid lebih dari 2 minggu sitostatika) ?</h5>
+												<fieldset class="position-relative form-group">
+													<div class="position-relative form-check">
+														<label class="form-check-label">
+															<input name="ans[imunosupresan]" value="1" type="radio" class="form-check-input"> Ya
+														</label>
+													</div>
+													<div class="position-relative form-check">
+														<label class="form-check-label">
+															<input name="ans[imunosupresan]" value="0" type="radio" class="form-check-input"> Tidak
+														</label>
+													</div>
+												</fieldset>
+												<h5 class="card-title">5. Apakah anak memepunyai riwayat alergi berat seperti sesak napas, bengkak, urtikaria di seluruh tubuh atau gejala syok anafilaksis (tidak sadar) setelah vaksinasi sebelumnya?</h5>
+												<fieldset class="position-relative form-group">
+													<div class="position-relative form-check">
+														<label class="form-check-label">
+															<input name="ans[alergi_berat]" value="1" type="radio" class="form-check-input"> Ya
+														</label>
+													</div>
+													<div class="position-relative form-check">
+														<label class="form-check-label">
+															<input name="ans[alergi_berat]" value="0" type="radio" class="form-check-input"> Tidak
+														</label>
+													</div>
+												</fieldset>
+												<h5 class="card-title">6. Apakah usia kehamilan Anda kurang dari 13 minggu?</h5>
+												<fieldset class="position-relative form-group">
+														<div class="position-relative form-check">
+															<label class="form-check-label">
+																<input name="ans[usia_kehamilan]" value="1" type="radio" class="form-check-input"> Ya
+															</label>
+														</div>
+														<div class="position-relative form-check">
+															<label class="form-check-label">
+																<input name="ans[usia_kehamilan]" value="0" type="radio" class="form-check-input"> Tidak
+															</label>
+														</div>
+												</fieldset>
+												<h5 class="card-title">7.	Apakah ibu memiliki keluhan dan tanda preeklampsia, seperti: Kaki bengkak, Sakit kepala, Nyeri ulu hati, Pandangan kabur?</h5>
+												<fieldset class="position-relative form-group">
+														<div class="position-relative form-check">
+															<label class="form-check-label">
+																<input name="ans[preeklampsia]" value="1" type="radio" class="form-check-input"> Ya
+															</label>
+														</div>
+														<div class="position-relative form-check">
+															<label class="form-check-label">
+																<input name="ans[preeklampsia]" value="0" type="radio" class="form-check-input"> Tidak
+															</label>
+														</div>
+												</fieldset>
+												<!--  -->
+												<button class="btn btn-primary mb-3">Submit</button>
+											</form>
 										</div>
 								</div>
 							</div>
