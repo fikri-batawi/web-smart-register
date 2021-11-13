@@ -10,7 +10,13 @@
       <div class="app-main__outer">
         <div class="app-main__inner">
           <!-- Content -->
-          <h2>isi disini</h2>
+          <table class="table table-striped table-hover">
+            <tr>
+              <th>No</th>
+              <th>NIK</th>
+              <th>Kategori</th>
+              <th>Keterangan</th>
+            </tr>
           <!-- End Content -->
         </div>
          <!-- Footer -->
