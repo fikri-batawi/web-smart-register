@@ -24,4 +24,5 @@ Route::get('/logout', 'AuthController@postLogout')->name('post.logout');
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
 Route::get('/dashboard/pendaftaran', 'DashboardController@pendaftaran')->name('dashboard.pendaftaran');
 Route::post('/dashboard/pendaftaran/post-anak', 'DashboardController@postPendaftaranAnak')->name('dashboard.pendaftaran.post.anak');
+Route::post('/dashboard/pendaftaran/post-umum', 'DashboardController@postPendaftaranUmum')->name('dashboard.pendaftaran.post.umum');
 Route::get('/dashboard/riwayat-pendaftaran', 'DashboardController@riwayat_pendaftaran')->name('dashboard.riwayat_pendaftaran');
