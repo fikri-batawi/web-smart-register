@@ -75,7 +75,7 @@
                 <a class="page-scroll" href="#Gallery">Gallery</a>
               </li>
               <li>
-                <a class="page-scroll" href="#contact">Contact</a>
+                <a class="page-scroll" href="#footer">Contact</a>
               </li>
             </ul>
           </div>
@@ -336,7 +336,7 @@
     </section>
 
     <!-- =============== Contact =============== -->
-    <section id="contact">
+    <!-- <section id="contact">
       <div class="container">
         <div class="row">
           <div class="title">
@@ -368,13 +368,14 @@
           </div>              
         </div>
       </div>
-    </section>
+    </section> -->
     
     <!-- Footer -->
     <footer id="footer">
       <div class="container">
         <div class="row">
           <div class="col-xs-12 col-sm-6 col-md-6">
+            <h4>Contact</h4>
             <ul class="social-links">
               <li><a class="wow fadeInUp animated" href="index.html#" style="visibility: visible; animation-name: fadeInUp;"><i class="fa fa-facebook"></i></a></li>
               <li><a data-wow-delay=".1s" class="wow fadeInUp animated" href="index.html#" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;"><i class="fa fa-twitter"></i></a></li>
