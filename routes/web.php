@@ -27,3 +27,4 @@ Route::post('/dashboard/pendaftaran/post-anak', 'DashboardController@postPendaft
 Route::post('/dashboard/pendaftaran/post-umum', 'DashboardController@postPendaftaranUmum')->name('dashboard.pendaftaran.post.umum');
 Route::post('/dashboard/pendaftaran/post-hamil', 'DashboardController@postPendaftaranHamil')->name('dashboard.pendaftaran.post.hamil');
 Route::get('/dashboard/riwayat-pendaftaran', 'DashboardController@riwayat_pendaftaran')->name('dashboard.riwayat_pendaftaran');
+Route::get('/dashboard/delete-riwayat-pendaftaran/{registerId}', 'DashboardController@delete_riwayat_pendaftaran')->name('dashboard.delete_riwayat_pendaftaran');

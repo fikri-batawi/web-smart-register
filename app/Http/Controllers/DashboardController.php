@@ -355,9 +355,25 @@ class DashboardController extends Controller
     return redirect()->route('dashboard.riwayat_pendaftaran');
   }
   public function riwayat_pendaftaran(){
-    $registers  = Register::all();
+    $userId = auth()->user()->id;
+    $role   = auth()->user()->role;
+
+    if($role == 'user'){
+      $registers  = Register::where('user_id', $userId)->get();
+    }else{
+      $registers  = Register::all();
+    }
+
     return view('dashboard.riwayat_pendaftaran', [
       'registers' => $registers,
+      'role'      => $role,
     ]);
+  }
+  public function delete_riwayat_pendaftaran($registerId){
+
+    $dataRegister = Register::find($registerId);
+    $dataRegister->delete();
+
+    return redirect()->route('dashboard.riwayat_pendaftaran')->with('message', 'Berhasil hapus data pendaftaran');
   }
 }
