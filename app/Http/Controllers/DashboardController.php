@@ -8,6 +8,8 @@ use App\Register;
 use App\UserAnswerRegistration;
 use App\User;
 
+use Carbon\Carbon;
+
 class DashboardController extends Controller
 {
   public function index(){
@@ -97,6 +99,8 @@ class DashboardController extends Controller
         $register->nik        = $request->nik;
         $register->status     = 'boleh';
         $register->keterangan = 'anak';
+        $register->tanggal_vaksin_1 = Carbon::now()->addDays(1);
+        $register->tanggal_vaksin_2 = Carbon::now()->addDays(1)->addMonth(1);
         $register->save();
 
         return redirect()->route('dashboard.riwayat_pendaftaran');
@@ -130,6 +134,8 @@ class DashboardController extends Controller
     $register->nik        = $request->nik;
     $register->status     = 'boleh';
     $register->keterangan = 'anak';
+    $register->tanggal_vaksin_1 = Carbon::now()->addDays(1);
+    $register->tanggal_vaksin_2 = Carbon::now()->addDays(1)->addMonth(1);
     $register->save();
 
     return redirect()->route('dashboard.riwayat_pendaftaran');
@@ -207,6 +213,8 @@ class DashboardController extends Controller
         $register->nik        = $request->nik;
         $register->status     = 'boleh';
         $register->keterangan = 'umum';
+        $register->tanggal_vaksin_1 = Carbon::now()->addDays(1);
+        $register->tanggal_vaksin_2 = Carbon::now()->addDays(1)->addMonth(1);
         $register->save();
 
         return redirect()->route('dashboard.riwayat_pendaftaran');
@@ -240,6 +248,8 @@ class DashboardController extends Controller
     $register->nik        = $request->nik;
     $register->status     = 'boleh';
     $register->keterangan = 'umum';
+    $register->tanggal_vaksin_1 = Carbon::now()->addDays(1);
+    $register->tanggal_vaksin_2 = Carbon::now()->addDays(1)->addMonth(1);
     $register->save();
 
     return redirect()->route('dashboard.riwayat_pendaftaran');
@@ -317,6 +327,8 @@ class DashboardController extends Controller
         $register->nik        = $request->nik;
         $register->status     = 'boleh';
         $register->keterangan = 'hamil';
+        $register->tanggal_vaksin_1 = Carbon::now()->addDays(1);
+        $register->tanggal_vaksin_2 = Carbon::now()->addDays(1)->addMonth(1);
         $register->save();
 
         return redirect()->route('dashboard.riwayat_pendaftaran');
@@ -350,6 +362,8 @@ class DashboardController extends Controller
     $register->nik        = $request->nik;
     $register->status     = 'boleh';
     $register->keterangan = 'hamil';
+    $register->tanggal_vaksin_1 = Carbon::now()->addDays(1);
+    $register->tanggal_vaksin_2 = Carbon::now()->addDays(1)->addMonth(1);
     $register->save();
 
     return redirect()->route('dashboard.riwayat_pendaftaran');

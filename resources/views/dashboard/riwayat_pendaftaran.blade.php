@@ -30,6 +30,8 @@
                       <th>Kategori</th>
                       <th>Boleh Vaksin</th>
                       <th>Waktu</th>
+                      <th>Tanggal Vaksin 1</th>
+                      <th>Tanggal Vaksin 2</th>
                       @if($role == 'admin')
                       <th>Aksi</th>
                       @endif
@@ -54,6 +56,8 @@
                         <td>{{$regist->keterangan}}</td>
                         <td>{{$regist->status}}</td>
                         <td>{{$regist->created_at}}</td>
+                        <td>{{$regist->tanggal_vaksin_1 ? explode(' ',$regist->tanggal_vaksin_1)[0] : '-'}}</td>
+                        <td>{{$regist->tanggal_vaksin_2 ? explode(' ',$regist->tanggal_vaksin_2)[0] : '-'}}</td>
                         @if($role == 'admin')
                           <th><a href="{{route('dashboard.delete_riwayat_pendaftaran', $regist->id)}}" class="text-danger">Hapus</a></th>
                         @endif
